@@ -1,13 +1,13 @@
 const mysql = require('mysql2');
 
-// Create a connection to the database
+
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'neh59' // Replace with your actual MySQL root password
+  password: 'neh59' 
 });
 
-// Connect to MySQL
+
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to MySQL:', err);
@@ -15,7 +15,7 @@ connection.connect((err) => {
   }
   console.log('Connected to MySQL.');
   
-  // Create database
+
   connection.query('CREATE DATABASE IF NOT EXISTS banner_db', (err) => {
     if (err) {
       console.error('Error creating database:', err);
@@ -23,7 +23,6 @@ connection.connect((err) => {
     }
     console.log('Database created or already exists.');
 
-    // Use the newly created database
     connection.query('USE banner_db', (err) => {
       if (err) {
         console.error('Error selecting database:', err);
@@ -31,7 +30,7 @@ connection.connect((err) => {
       }
       console.log('Database selected.');
 
-      // Create table
+   
       const createTableQuery = `
         CREATE TABLE IF NOT EXISTS banner (
           id INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,7 +47,7 @@ connection.connect((err) => {
         }
         console.log('Table created or already exists.');
 
-        // Insert data
+      
         const insertDataQuery = `
           INSERT INTO banner (isVisible, description, countdown, link)
           VALUES (?, ?, ?, ?)
@@ -62,7 +61,7 @@ connection.connect((err) => {
           }
           console.log('Data inserted successfully.');
 
-          // Close the connection
+         
           connection.end();
         });
       });

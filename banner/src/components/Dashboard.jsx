@@ -11,7 +11,7 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    // Fetch initial banner data from the server
+   
     axios.get('http://localhost:5000/api/banner')
       .then(response => setBanner(response.data))
       .catch(error => console.error(error));
